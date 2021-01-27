@@ -36,18 +36,17 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to News Feed!
         </h1>
-
+        <p/>
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+          <code className={styles.code}>News doesn't wait, informations is all you get</code>
         </p>
 
         <div className={styles.grid}>
 
           <div className="site-card-wrapper">
-            <Row gutter={{ xs: 2, sm: 4, md: 8, lg: 16 }} style={{alignContent: 'center', alignItems: 'center'}}>
+            <Row gutter={{ xs: 2, sm: 4, md: 8, lg: 16 }} justify={'center'}>
                 {news.map((e, index) => (
                   <Col span={{xs: 1, sm: 2, md:4, lg:8}} 
                   style={{display: 'flex', flexWrap: 'wrap', marginTop: '3%', alignContent: 'center', alignItems: 'center'}} 
