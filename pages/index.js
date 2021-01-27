@@ -6,6 +6,7 @@ import React from 'react'
 import apiKey from '../apiKey'
 import { Card, Col, Row } from 'antd'
 import 'antd/dist/antd.css'
+import moment from 'moment'
 
 export default function Home() {
   const [news, setNews] = useState([])
@@ -14,12 +15,11 @@ export default function Home() {
       const response = await fetch('http://newsapi.org/v2/top-headlines?' + 'country=fr&' + `apiKey=${apiKey}`)
       const newNewsList = await response.json()
       setNews(newNewsList.articles)
-      console.log(news)
     }
 
     loadData()
   }, [])
-
+  console.log(news)
   const { Meta } = Card;
 
 
@@ -36,30 +36,34 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to News Feed!
+          Bienvenue sur News Feed !
         </h1>
-        <p/>
+        <p />
         <p className={styles.description}>
-          <code className={styles.code}>News doesn't wait, informations is all you get</code>
+          <code className={styles.code}>Les nouvelles n'attendent pas, des informations c'est tout ce que vous avez</code>
         </p>
 
         <div className={styles.grid}>
 
           <div className="site-card-wrapper">
             <Row gutter={{ xs: 2, sm: 4, md: 8, lg: 16 }} justify={'center'}>
-                {news.map((e, index) => (
-                  <Col span={{xs: 1, sm: 2, md:4, lg:8}} 
-                  style={{display: 'flex', flexWrap: 'wrap', marginTop: '3%', alignContent: 'center', alignItems: 'center'}} 
+              {news.map((e, index) => (
+                <Col span={{ xs: 1, sm: 2, md: 4, lg: 8 }}
+                  style={{ display: 'flex', flexWrap: 'wrap', marginTop: '3%', alignContent: 'center', alignItems: 'center' }}
                   key={index}>
+                  <Link href={`/articles/${index}`}>
+                    <a>
                     <Card
                       hoverable
-                      style={{ width: 240}}
-                      cover={<img alt="example" src={e.urlToImage} />}
+                      style={{ width: 240 }}
+                      cover={<img alt="Image Introuvable" src={e.urlToImage} />}
                     >
-                      <Meta title={e.title} description={e.publishedAt} />
+                      <Meta title={e.title} description={`${e.source.name} : ` + ` ${moment(e.publishedAt).format("DD-MM-YYYY HH:mm")}`} />
                     </Card>
-                  </Col>
-                ))}
+                    </a>
+                  </Link>
+                </Col>
+              ))}
             </Row>
           </div>
         </div>
