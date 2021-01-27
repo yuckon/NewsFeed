@@ -2,12 +2,12 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import React from 'react'
 import apiKey from '../apiKey'
 import { Card, Col, Row } from 'antd'
 import 'antd/dist/antd.css'
 
 export default function Home() {
-
   const [news, setNews] = useState([])
   useEffect(() => {
     async function loadData() {
@@ -46,15 +46,16 @@ export default function Home() {
 
         <div className={styles.grid}>
 
-          <div className="site-card-wrapper" style={{ width: "100%" }}>
-            <Row gutter={16}>
+          <div className="site-card-wrapper">
+            <Row gutter={{ xs: 2, sm: 4, md: 8, lg: 16 }} style={{alignContent: 'center', alignItems: 'center'}}>
                 {news.map((e, index) => (
-                  <Col span={8}>
+                  <Col span={{xs: 1, sm: 2, md:4, lg:8}} 
+                  style={{display: 'flex', flexWrap: 'wrap', marginTop: '3%', alignContent: 'center', alignItems: 'center'}} 
+                  key={index}>
                     <Card
                       hoverable
-                      style={{ width: 480, margin: "3%" }}
+                      style={{ width: 240}}
                       cover={<img alt="example" src={e.urlToImage} />}
-                      key={index}
                     >
                       <Meta title={e.title} description={e.publishedAt} />
                     </Card>
