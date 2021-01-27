@@ -3,9 +3,10 @@ import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import apiKey from '../apiKey'
+import { Card, Col, Row } from 'antd'
+import 'antd/dist/antd.css'
 
 export default function Home() {
-
 
   const [news, setNews] = useState([])
   useEffect(() => {
@@ -19,9 +20,15 @@ export default function Home() {
     loadData()
   }, [])
 
+  const { Meta } = Card;
+
+
   return (
 
+
+
     <div className={styles.container}>
+
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
@@ -39,16 +46,22 @@ export default function Home() {
 
         <div className={styles.grid}>
 
-          {news.map((e, index) => (
-            <div key={index}>
-              {/* <Link href="/"> */}
-                <a href="https://nextjs.org/docs" className={styles.card}>
-                <h3>{e.title}</h3>
-                <p>Find in-depth information about Next.js features and API.</p>
-                </a>
-              {/* </Link> */}
-            </div>
-          ))}
+          <div className="site-card-wrapper" style={{ width: "100%" }}>
+            <Row gutter={16}>
+                {news.map((e, index) => (
+                  <Col span={8}>
+                    <Card
+                      hoverable
+                      style={{ width: 480, margin: "3%" }}
+                      cover={<img alt="example" src={e.urlToImage} />}
+                      key={index}
+                    >
+                      <Meta title={e.title} description={e.publishedAt} />
+                    </Card>
+                  </Col>
+                ))}
+            </Row>
+          </div>
         </div>
       </main>
 
