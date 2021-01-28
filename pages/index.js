@@ -9,7 +9,7 @@ import 'antd/dist/antd.css'
 import moment from 'moment'
 
 export default function Home() {
-
+ 
   const [news, setNews] = useState([])
   useEffect(() => {
     async function loadData() {
@@ -20,8 +20,7 @@ export default function Home() {
 
     loadData()
   }, [])
-  console.log(news)
-  const { Meta } = Card;
+  const { Meta } = Card
 
   return (
 
@@ -49,7 +48,7 @@ export default function Home() {
                 <Col span={{ xs: 1, sm: 2, md: 4, lg: 8 }}
                   style={{ display: 'flex', flexWrap: 'wrap', marginTop: '3%', alignContent: 'center', alignItems: 'center' }}
                   key={index}>
-                  <Link href={`/articles/${index}`}>
+                  <Link href={{ pathname:`/article/${index}`,query: { object: JSON.stringify(e) }}}>
                     <a>
                     <Card
                       hoverable
