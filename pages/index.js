@@ -9,6 +9,7 @@ import 'antd/dist/antd.css'
 import moment from 'moment'
 
 export default function Home() {
+
   const [news, setNews] = useState([])
   useEffect(() => {
     async function loadData() {
@@ -22,15 +23,12 @@ export default function Home() {
   console.log(news)
   const { Meta } = Card;
 
-
   return (
-
-
 
     <div className={styles.container}>
 
       <Head>
-        <title>Create Next App</title>
+        <title>News Feed</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
