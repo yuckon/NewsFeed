@@ -13,7 +13,7 @@ export default function Home() {
   const [news, setNews] = useState([])
   useEffect(() => {
     async function loadData() {
-      const response = await fetch('http://newsapi.org/v2/top-headlines?' + 'country=fr&' + `apiKey=${apiKey}`)
+      const response = await fetch('https://newsapi.org/v2/top-headlines?' + 'country=fr&' + `apiKey=${apiKey}`)
       const newNewsList = await response.json()
       setNews(newNewsList.articles)
     }
