@@ -53,7 +53,7 @@ export default function Home() {
                     <Card
                       hoverable
                       style={{ width: 240 }}
-                      cover={<img alt="Image Introuvable" src={e.urlToImage} />}
+                      cover={<img alt="Image Introuvable" src={e.urlToImage || ""} />}
                     >
                       <Meta title={e.title || ""} description={`${e.source.name || ""} : ` + ` ${moment(e.publishedAt).format("DD-MM-YYYY HH:mm") || ""}`} />
                     </Card>
