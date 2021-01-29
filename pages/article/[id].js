@@ -46,7 +46,7 @@ function Details({ router: { query } }) {
                             <div style={{ fontSize: '1.2em' }}>{article.content || ""}...<a href={article.url || ""}>[Voir plus ici]</a></div>
                         </Descriptions.Item>
                         <Descriptions.Item>
-                            <div style={{ fontStyle: 'italic' }}>{article.source.name || ""} - {moment(article.publishedAt).format("DD-MM-YYYY HH:mm") || ""}</div>
+                            <div style={{ fontStyle: 'italic' }}>{(article.source.name) || ""} - {moment(article.publishedAt).format("DD-MM-YYYY HH:mm") || ""}</div>
                         </Descriptions.Item>
                     </Descriptions>
                 </PageHeader>
