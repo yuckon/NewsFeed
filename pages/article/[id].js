@@ -6,7 +6,8 @@ import moment from 'moment'
 
 function Details({ router: { query } }) {
 
-    const article = JSON.parse(query.object)
+    let article = {}
+    article = JSON.parse(query.object)
     let articleContentPlus = article.content.split('…')
     article.content = articleContentPlus[articleContentPlus.length - 2]
     console.log(article)
