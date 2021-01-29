@@ -1,4 +1,6 @@
+import { useState, useEffect } from 'react'
 import React from 'react'
+import apiKey from '../../apiKey'
 import 'antd/dist/antd.css'
 import { withRouter } from 'next/router'
 import { Breadcrumb, Divider, PageHeader, Descriptions, Image, Layout } from 'antd'
@@ -6,10 +8,20 @@ import moment from 'moment'
 
 function Details({ router: { query } }) {
 
-    const article = JSON.parse(query.object)
-    let articleContentPlus = article.content.split('…')
-    article.content = articleContentPlus[articleContentPlus.length - 2]
-    console.log(article)
+    const id = location.pathname.split('/')[2]
+    const [article, setArticle] = useState(JSON.parse(query.object))
+    useEffect(() => {
+      async function loadData() {
+        const response = await fetch('http://newsapi.org/v2/top-headlines?' + 'country=fr&' + `apiKey=${apiKey}`)
+        const newArticleList = await response.json()
+        let currentArticle = newArticleList.articles[id]
+        let articleContentPlus = currentArticle.content.split('…')
+        currentArticle.content = articleContentPlus[articleContentPlus.length - 2]
+        setArticle(currentArticle)
+      }
+  
+      loadData()
+    })
 
     const { Footer } = Layout;
 
