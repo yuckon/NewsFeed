@@ -6,15 +6,14 @@ import React from 'react'
 import apiKey from '../apiKey'
 import { Card, Col, Row } from 'antd'
 import 'antd/dist/antd.css'
-import { withRouter } from 'next/router'
 import moment from 'moment'
 
-function Home() {
+export default function Home() {
  
   const [news, setNews] = useState([])
   useEffect(() => {
     async function loadData() {
-      const response = await fetch('https://newsapi.org/v2/top-headlines?' + 'country=fr&' + `apiKey=${apiKey}`)
+      const response = await fetch('http://newsapi.org/v2/top-headlines?' + 'country=fr&' + `apiKey=${apiKey}`)
       const newNewsList = await response.json()
       setNews(newNewsList.articles)
     }
@@ -22,7 +21,6 @@ function Home() {
     loadData()
   }, [])
   const { Meta } = Card
-  console.log(news)
 
   return (
 
@@ -50,17 +48,17 @@ function Home() {
                 <Col span={{ xs: 1, sm: 2, md: 4, lg: 8 }}
                   style={{ display: 'flex', flexWrap: 'wrap', marginTop: '3%', alignContent: 'center', alignItems: 'center' }}
                   key={index}>
-                  {/* <Link href={{ pathname:`/article/${index}`,query: { object: JSON.stringify(e) || {}  }}}>
-                    <a> */}
+                  <Link href={{ pathname:`/article/${index}`,query: { object: JSON.stringify(e) }}}>
+                    <a>
                     <Card
                       hoverable
                       style={{ width: 240 }}
-                      cover={<img alt="Image Introuvable" src={e.urlToImage || ""} />}
+                      cover={<img alt="Image Introuvable" src={e.urlToImage} />}
                     >
-                      <Meta title={e.title || ""} description={`${e.source.name || ""} : ` + ` ${moment(e.publishedAt).format("DD-MM-YYYY HH:mm") || ""}`} />
+                      <Meta title={e.title} description={`${e.source.name} : ` + ` ${moment(e.publishedAt).format("DD-MM-YYYY HH:mm")}`} />
                     </Card>
-                    {/* </a>
-                  </Link> */}
+                    </a>
+                  </Link>
                 </Col>
               ))}
             </Row>
@@ -81,4 +79,3 @@ function Home() {
     </div>
   )
 }
-export default withRouter(Home)
