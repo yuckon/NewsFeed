@@ -26,7 +26,6 @@ function Details({ router: { query } }) {
                 <PageHeader
                     ghost={false}
                     title={article.title}
-                    style={{}}
                 >
                     <Descriptions size="middle" column={1}>
                         <Descriptions.Item>
