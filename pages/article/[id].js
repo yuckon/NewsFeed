@@ -8,13 +8,13 @@ import moment from 'moment'
 
 function Details({ router: { query } }) {
 
-    const id = location.pathname.split('/')[2]
+    // const id = location.pathname.split('/')[2]
     const [article, setArticle] = useState(JSON.parse(query.object))
     useEffect(() => {
       async function loadData() {
         const response = await fetch('http://newsapi.org/v2/top-headlines?' + 'country=fr&' + `apiKey=${apiKey}`)
         const newArticleList = await response.json()
-        let currentArticle = newArticleList.articles[id]
+        let currentArticle = newArticleList.articles[query.id]
         let articleContentPlus = currentArticle.content.split('…')
         currentArticle.content = articleContentPlus[articleContentPlus.length - 2]
         setArticle(currentArticle)
