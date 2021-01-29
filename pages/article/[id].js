@@ -6,12 +6,17 @@ import moment from 'moment'
 
 function Details({ router: { query } }) {
 
-    let article = {}
-    article = JSON.parse(query.object)
-    let articleContentPlus = article.content.split('…')
-    article.content = articleContentPlus[articleContentPlus.length - 2]
-    console.log(article)
-
+    if(query == null || undefined || {})
+    {
+        let article = {}
+    }
+    else
+    {
+        let article = JSON.parse(query.object)
+        let articleContentPlus = article.content.split('…')
+        article.content = articleContentPlus[articleContentPlus.length - 2]
+    }
+    
     const { Footer } = Layout;
 
     return (
@@ -26,20 +31,20 @@ function Details({ router: { query } }) {
             <Divider style={{marginTop: 0}}/>
                 <PageHeader
                     ghost={false}
-                    title={article.title}
+                    title={article.title || ""}
                 >
                     <Descriptions size="middle" column={1}>
                         <Descriptions.Item>
-                            <div>{article.description}</div>
+                            <div>{article.description || ""}</div>
                         </Descriptions.Item >
                         <Descriptions.Item id="imageArticle">
-                            <Image src={article.urlToImage} alt="Image Non Disponible"/>
+                            <Image src={article.urlToImage || ""} alt="Image Non Disponible"/>
                         </Descriptions.Item>
                         <Descriptions.Item>
-                            <div style={{ fontSize: '1.2em' }}>{article.content}...<a href={article.url}>[Voir plus ici]</a></div>
+                            <div style={{ fontSize: '1.2em' }}>{article.content || ""}...<a href={article.url || ""}>[Voir plus ici]</a></div>
                         </Descriptions.Item>
                         <Descriptions.Item>
-                            <div style={{ fontStyle: 'italic' }}>{article.source.name} - {moment(article.publishedAt).format("DD-MM-YYYY HH:mm")}</div>
+                            <div style={{ fontStyle: 'italic' }}>{article.source.name || ""} - {moment(article.publishedAt).format("DD-MM-YYYY HH:mm") || ""}</div>
                         </Descriptions.Item>
                     </Descriptions>
                 </PageHeader>
