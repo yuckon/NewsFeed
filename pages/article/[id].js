@@ -8,7 +8,7 @@ import moment from 'moment'
 
 function Details({ router: { query } }) {
 
-    const id = location.pathname.split('/')[2]
+    const id = query.id
     const [article, setArticle] = useState(JSON.parse(query.object))
     useEffect(() => {
       async function loadData() {

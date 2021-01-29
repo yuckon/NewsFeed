@@ -6,9 +6,10 @@ import React from 'react'
 import apiKey from '../apiKey'
 import { Card, Col, Row } from 'antd'
 import 'antd/dist/antd.css'
+import { withRouter } from 'next/router'
 import moment from 'moment'
 
-export default function Home() {
+function Home() {
  
   const [news, setNews] = useState([])
   useEffect(() => {
@@ -79,3 +80,4 @@ export default function Home() {
     </div>
   )
 }
+export default withRouter(Home)
