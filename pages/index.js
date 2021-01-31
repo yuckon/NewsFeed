@@ -48,8 +48,8 @@ export default function Home() {
                 <Col span={{ xs: 1, sm: 2, md: 4, lg: 8 }}
                   style={{ display: 'flex', flexWrap: 'wrap', marginTop: '3%', alignContent: 'center', alignItems: 'center' }}
                   key={index}>
-                  {/* <Link href={{ pathname:`/article/${index}`,query: { object: JSON.stringify(e) }}} prefetch={false} passHref>
-                    <a> */}
+                  <Link href={{ pathname:`/article/${index}`,query: { object: JSON.stringify(e) }}} prefetch={false} passHref>
+                    <a>
                     <Card
                       hoverable
                       style={{ width: 240 }}
@@ -57,8 +57,8 @@ export default function Home() {
                     >
                       <Meta title={e.title} description={`${e.source.name} : ` + ` ${moment(e.publishedAt).format("DD-MM-YYYY HH:mm")}`} />
                     </Card>
-                    {/* </a>
-                  </Link> */}
+                    </a>
+                  </Link>
                 </Col>
               ))}
             </Row>

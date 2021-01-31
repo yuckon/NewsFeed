@@ -4,14 +4,14 @@ import { withRouter } from 'next/router'
 import { Breadcrumb, Divider, PageHeader, Descriptions, Image, Layout } from 'antd'
 import moment from 'moment'
 
-function Details(/*{ router: { query } }*/) {
+function Details({ router: { query } }) {
 
-    // console.log(query)
-    // const article = JSON.parse(query.object)
-    // console.log(article)
-    // let articleContentPlus = article.content.split('…')
-    // article.content = articleContentPlus[articleContentPlus.length - 2]
-    // console.log(article)
+    console.log(query)
+    const article = JSON.parse(query.object)
+    console.log(article)
+    let articleContentPlus = article.content.split('…')
+    article.content = articleContentPlus[articleContentPlus.length - 2]
+    console.log(article)
 
     const { Footer } = Layout;
 
@@ -25,7 +25,7 @@ function Details(/*{ router: { query } }*/) {
             </Breadcrumb>
             <div className="site-page-header-ghost-wrapper">
             <Divider style={{marginTop: 0}}/>
-                {/* <PageHeader
+                <PageHeader
                     ghost={false}
                     title={article.title}
                 >
@@ -43,7 +43,7 @@ function Details(/*{ router: { query } }*/) {
                             <div style={{ fontStyle: 'italic' }}>{article.source.name} - {moment(article.publishedAt).format("DD-MM-YYYY HH:mm")}</div>
                         </Descriptions.Item>
                     </Descriptions>
-                </PageHeader> */}
+                </PageHeader>
                 <Divider/>
                 <Footer id="footerArticle">
                     <a
