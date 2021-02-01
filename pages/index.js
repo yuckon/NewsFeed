@@ -28,7 +28,7 @@ export default function Home() {
 
     <div className={styles.container}>
       <Row justify="center">
-        <Col>
+        <Col span={20}>
           <BackTop />
           <Head>
             <title>Photo Netz</title>
@@ -41,7 +41,7 @@ export default function Home() {
             </h1>
             <p />
             <p className={styles.description}>
-              <div style={{ textAlign: 'center', fontStyle: 'italic', fontFamily: 'verdana', fontSize: '0.5em'}}>Flash doesn't wait, an instant it's all you got !</div>
+              <div style={{ textAlign: 'center', fontStyle: 'italic', fontFamily: 'verdana', fontSize: '0.5em'}}>A flash don't wait, a moment that's all you need !</div>
             </p>
 
             <div className={styles.grid}>
