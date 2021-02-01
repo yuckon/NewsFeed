@@ -13,60 +13,66 @@ function Details({ router: { query } }) {
 
     const { Footer } = Layout
     const { Title } = Typography
+
     const renderBio = () => {
-        if (photo.user.bio === null || photo.user.bio === undefined) {
-            return <></>
-        } else {
-            return <div style={{ fontStyle: 'italic', marginTop: '2%', textAlign: 'center' }}>" {photo.user.bio} "</div>
-        }
-    }
-    const instagramLink = () => {
-        if (photo.user.instagram_username === null || photo.user.instagram_username === undefined) {
-            return <></>
-        } else {
-            return (
-                <div style={{textAlign: 'center'}}>
-                    <div style={{ textDecoration: 'underline' }}>Usefull links :</div>
-                    <a href={`https://www.instagram.com/${photo.user.instagram_username}/`}><InstagramOutlined /> {photo.user.instagram_username}</a>
-                </div>
-            )
-        }
-    }
-    const twitterLink = () => {
-        if (photo.user.twitter_username === null || photo.user.twitter_username === undefined) {
-            return <></>
-        } else {
-            return (
-                <div style={{textAlign: 'center'}}>
-                    <a href={`https://www.twitter.com/${photo.user.twitter_username}/`}><TwitterOutlined /> {photo.user.twitter_username}</a>
-                </div>
-            )
-        }
-    }
-    const portfolioLink = () => {
-        if (photo.user.portfolio_url === null || photo.user.portfolio_url === undefined) {
-            return <></>
-        } else {
-            return (
-                <div style={{textAlign: 'center'}}>
-                    <a href={photo.user.portfolio_url}><FolderOpenOutlined /> portfolio</a>
-                </div>
-            )
-        }
-    }
-    const interesstingNumbers = () => {
         return (
-            <div style={{textAlign: 'center'}}>
-                <div style={{ textDecoration: 'underline' }}>Interessting Numbers :</div>
-                    Number of collections : {photo.user.total_collection || 0}
-                <br />
-                    Number of total likes : {photo.user.total_likes || 0}
-                <br />
-                    Number of posted photos : {photo.user.total_photos || 0}
-                <br />
-            </div>
+            <div style={{ fontStyle: 'italic', marginTop: '2%', textAlign: 'center' }}>" {photo.user.bio || "No bio added"} "</div>
         )
     }
+    const instagramLink = () => {
+        return (
+            <>
+                <div style={{ textDecoration: 'underline' }}>Usefull links :</div>
+                <a href={(`https://www.instagram.com/${photo.user.instagram_username}/`) || 'https://www.instagram.com/'}><InstagramOutlined /> {photo.user.instagram_username || "Missing Informations"}</a>
+                <br/>
+            </>
+        )
+    }
+
+    const twitterLink = () => {
+        return (
+            <>
+            <a href={(`https://www.twitter.com/${photo.user.twitter_username}/`) || 'https://www.twitter.com/'}><TwitterOutlined /> {photo.user.twitter_username || "Missing Informations"}</a>
+            <br/>
+            </>
+        )
+    }
+    const portfolioLink = () => {
+        return (
+            <>
+                <a href={photo.user.portfolio_url || "/"}><FolderOpenOutlined />portfolio</a>
+            </>
+        )
+    }
+
+    const numberCollection = () => {
+        return (
+            <>
+                <div style={{ textDecoration: 'underline' }}>Interessting Numbers :</div>
+                Number of collections : {photo.user.total_collection || 0}
+                <br />
+            </>
+        )
+    }
+
+    const numberLikes = () => {
+        return (
+            <>
+                Number of total likes : {photo.user.total_likes || 0}
+                <br />
+            </>
+        )
+    }
+
+    const numberPhotos = () => {
+        return (
+            <>
+                Number of posted photos : {photo.user.total_photos || 0}
+                <br />
+            </>
+        )
+    }
+
 
     return (
         <div className="site-card-wrapper">
@@ -80,8 +86,8 @@ function Details({ router: { query } }) {
             <div className="site-page-header-ghost-wrapper">
                 <Title level={2} underline={true} className={styles.title} style={{ textAlign: 'center', textTransform: 'capitalize' }}>{photo.alt_description}</Title>
                 <Descriptions size="small" column={1}>
-                    <Descriptions.Item id="imageArticle">
-                        <Image src={photo.links.download} alt={photo.alt_description} width={"100%"}
+                    <Descriptions.Item id="imageArticle" >
+                        <Image src={photo.links.download} alt={photo.alt_description} width={'100%'}
                             placeholder={
                                 <Image
                                     preview={false}
@@ -101,17 +107,23 @@ function Details({ router: { query } }) {
                             <br />
                             <div style={{ fontSize: '1.2em', fontStyle: 'italic', textAlign: 'center' }}>{photo.user.name}   {photo.user.location}</div>
                             {renderBio()}
-                            <Row style={{marginTop: '2%'}}>
+                            <Row style={{ marginTop: '2%' }}>
                                 <Col span={12}>
                                     <div style={{ fontSize: '1em', fontStyle: 'italic', marginTop: '2%' }}>
-                                        {interesstingNumbers()}
+                                        <div style={{ textAlign: 'center' }}>
+                                            {numberCollection()}
+                                            {numberLikes()}
+                                            {numberPhotos()}
+                                        </div>
                                     </div>
                                 </Col>
                                 <Col span={12}>
                                     <div style={{ fontSize: '1em', fontStyle: 'italic', marginTop: '2%', textAlign: 'right' }}>
-                                        {instagramLink()}
-                                        {twitterLink()}
-                                        {portfolioLink()}
+                                        <div style={{ textAlign: 'center' }}>
+                                            {instagramLink()}
+                                            {twitterLink()}
+                                            {portfolioLink()}
+                                        </div>
                                     </div>
                                 </Col>
                             </Row>
@@ -124,12 +136,12 @@ function Details({ router: { query } }) {
                 <Divider />
                 <Footer id="footerArticle">
                     <a
-                        href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+                        href="https://heroku.com"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         Powered by{' '}
-                        <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
+                        <img src="/heroku.png" alt="Heroku Logo" className="logo" />
                     </a></Footer>
             </div>
         </div>
