@@ -8,7 +8,7 @@ import moment from 'moment'
 
 function Details({ router: { query } }) {
 
-    const photo = JSON.parse(query)
+    const photo = JSON.parse(query.object)
     console.log(photo)
 
     const { Footer } = Layout
@@ -79,11 +79,17 @@ function Details({ router: { query } }) {
                     <HomeFilled />
                 </Breadcrumb.Item>
             </Breadcrumb>
-            {/* <div className="site-page-header-ghost-wrapper">
+            <div className="site-page-header-ghost-wrapper">
                 <Title level={2} underline={true} className={styles.title} style={{ textAlign: 'center', textTransform: 'capitalize' }}>{photo.alt_description}</Title>
                 <Descriptions size="middle" column={1}>
                     <Descriptions.Item id="imageArticle">
-                        <Image src={photo.links.download} alt={photo.alt_description} width={"100%"}/>
+                        <Image src={photo.links.download} alt={photo.alt_description} width={"100%"}
+                            placeholder={
+                                <Image
+                                    preview={false}
+                                    src={photo.links.download}
+                                />
+                            } />
                     </Descriptions.Item>
                     <Descriptions.Item>
                         <div style={{ fontWeight: 'bold' }}>{photo.likes} <HeartTwoTone twoToneColor="#FF4033" /></div>
@@ -109,7 +115,7 @@ function Details({ router: { query } }) {
                             </div>
                         </Card>
                     </Descriptions.Item>
-                </Descriptions> */}
+                </Descriptions>
                 <Divider />
                 <Footer id="footerArticle">
                     <a
@@ -121,7 +127,7 @@ function Details({ router: { query } }) {
                         <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
                     </a></Footer>
             </div>
-        // </div>
+        </div>
     )
 }
 
