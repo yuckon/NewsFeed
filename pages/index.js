@@ -28,13 +28,13 @@ export default function Home() {
     <div className={styles.container}>
       <BackTop />
       <Head>
-        <title>News Feed</title>
+        <title>Photo Netz</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          <CameraFilled /> Welcome on Foto Netz ! <CameraFilled />
+          <CameraFilled /> Welcome on Photo Netz ! <CameraFilled />
         </h1>
         <p />
         <p className={styles.description}>
