@@ -8,68 +8,67 @@ import moment from 'moment'
 
 function Details({ router: { query } }) {
 
-    console.log(query)
-    // const photo = JSON.parse(query.object)
-    // console.log(photo)
+    const photo = JSON.parse(query)
+    console.log(photo)
 
     const { Footer } = Layout
-    // const { Title } = Typography
-    // const renderBio = () => {
-    //     if (photo.user.bio === null || photo.user.bio === undefined) {
-    //         return <></>
-    //     } else {
-    //         return <div style={{ fontStyle: 'italic', marginTop: '2%' }}>" {photo.user.bio} "</div>
-    //     }
-    // }
-    // const instagramLink = () => {
-    //     if (photo.user.instagram_username === null || photo.user.instagram_username === undefined) {
-    //         return <></>
-    //     } else {
-    //         return (
-    //             <>
-    //                 <div style={{ textDecoration: 'underline' }}>Usefull links :</div>
-    //                 <a href={`https://www.instagram.com/${photo.user.instagram_username}/`}><InstagramOutlined /> {photo.user.instagram_username}</a>
-    //             </>
-    //         )
-    //     }
-    // }
-    // const twitterLink = () => {
-    //     if (photo.user.twitter_username === null || photo.user.twitter_username === undefined) {
-    //         return <></>
-    //     } else {
-    //         return (
-    //             <>
-    //                 <br />
-    //                 <a href={`https://www.twitter.com/${photo.user.twitter_username}/`}><TwitterOutlined /> {photo.user.twitter_username}</a>
-    //             </>
-    //         )
-    //     }
-    // }
-    // const portfolioLink = () => {
-    //     if (photo.user.portfolio_url === null || photo.user.portfolio_url === undefined) {
-    //         return <></>
-    //     } else {
-    //         return (
-    //             <>
-    //                 <br />
-    //                 <a href={photo.user.portfolio_url}><FolderOpenOutlined /> portfolio</a>
-    //             </>
-    //         )
-    //     }
-    // }
-    // const interesstingNumbers = () => {
-    //     return (
-    //         <>
-    //             <div style={{ textDecoration: 'underline' }}>Interessting Numbers :</div>
-    //                 Number of collections : {photo.user.total_collection || 0}
-    //             <br />
-    //                 Number of total likes : {photo.user.total_likes || 0}
-    //             <br />
-    //                 Number of posted photos : {photo.user.total_photos || 0}
-    //             <br />
-    //         </>
-    //     )
-    // }
+    const { Title } = Typography
+    const renderBio = () => {
+        if (photo.user.bio === null || photo.user.bio === undefined) {
+            return <></>
+        } else {
+            return <div style={{ fontStyle: 'italic', marginTop: '2%' }}>" {photo.user.bio} "</div>
+        }
+    }
+    const instagramLink = () => {
+        if (photo.user.instagram_username === null || photo.user.instagram_username === undefined) {
+            return <></>
+        } else {
+            return (
+                <>
+                    <div style={{ textDecoration: 'underline' }}>Usefull links :</div>
+                    <a href={`https://www.instagram.com/${photo.user.instagram_username}/`}><InstagramOutlined /> {photo.user.instagram_username}</a>
+                </>
+            )
+        }
+    }
+    const twitterLink = () => {
+        if (photo.user.twitter_username === null || photo.user.twitter_username === undefined) {
+            return <></>
+        } else {
+            return (
+                <>
+                    <br />
+                    <a href={`https://www.twitter.com/${photo.user.twitter_username}/`}><TwitterOutlined /> {photo.user.twitter_username}</a>
+                </>
+            )
+        }
+    }
+    const portfolioLink = () => {
+        if (photo.user.portfolio_url === null || photo.user.portfolio_url === undefined) {
+            return <></>
+        } else {
+            return (
+                <>
+                    <br />
+                    <a href={photo.user.portfolio_url}><FolderOpenOutlined /> portfolio</a>
+                </>
+            )
+        }
+    }
+    const interesstingNumbers = () => {
+        return (
+            <>
+                <div style={{ textDecoration: 'underline' }}>Interessting Numbers :</div>
+                    Number of collections : {photo.user.total_collection || 0}
+                <br />
+                    Number of total likes : {photo.user.total_likes || 0}
+                <br />
+                    Number of posted photos : {photo.user.total_photos || 0}
+                <br />
+            </>
+        )
+    }
 
     return (
         <div className="site-card-wrapper">
@@ -84,13 +83,7 @@ function Details({ router: { query } }) {
                 <Title level={2} underline={true} className={styles.title} style={{ textAlign: 'center', textTransform: 'capitalize' }}>{photo.alt_description}</Title>
                 <Descriptions size="middle" column={1}>
                     <Descriptions.Item id="imageArticle">
-                        <Image src={photo.links.download} alt={photo.alt_description} width={"100%"}
-                            placeholder={
-                                <Image
-                                    preview={false}
-                                    src={photo.links.download}
-                                />
-                            } />
+                        <Image src={photo.links.download} alt={photo.alt_description} width={"100%"}/>
                     </Descriptions.Item>
                     <Descriptions.Item>
                         <div style={{ fontWeight: 'bold' }}>{photo.likes} <HeartTwoTone twoToneColor="#FF4033" /></div>

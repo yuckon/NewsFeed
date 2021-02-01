@@ -8,14 +8,8 @@ import { HeartTwoTone, CameraFilled } from '@ant-design/icons'
 import 'antd/dist/antd.css'
 import moment from 'moment'
 import apiKey from '../apiKey'
-import { useRouter } from 'next/router'
 
 export default function Home() {
-
-  const router = useRouter()
-  const { photo } = router.query
-  console.log(photo)
-
 
   const [news, setNews] = useState([])
   useEffect(() => {
