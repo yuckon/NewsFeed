@@ -11,7 +11,7 @@ function Details(/*{ router: { query } }*/) {
     // const photo = JSON.parse(query.object)
     // console.log(photo)
 
-    // const { Footer } = Layout
+    const { Footer } = Layout
     // const { Title } = Typography
     // const renderBio = () => {
     //     if (photo.user.bio === null || photo.user.bio === undefined) {
