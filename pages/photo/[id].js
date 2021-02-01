@@ -9,7 +9,6 @@ import moment from 'moment'
 function Details({ router: { query } }) {
 
     const photo = JSON.parse(query.object)
-    console.log(photo)
 
     const { Footer } = Layout
     const { Title } = Typography
