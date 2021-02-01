@@ -6,8 +6,9 @@ import { Breadcrumb, Divider, Descriptions, Image, Layout, Typography, Avatar, C
 import { HeartTwoTone, InstagramOutlined, TwitterOutlined, FolderOpenOutlined, HomeFilled, FireTwoTone } from '@ant-design/icons'
 import moment from 'moment'
 
-function Details(/*{ router: { query } }*/) {
+function Details({ router: { query } }) {
 
+    console.log(query)
     // const photo = JSON.parse(query.object)
     // console.log(photo)
 
