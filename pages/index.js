@@ -49,8 +49,8 @@ export default function Home() {
                 <Col span={{ xs: 2, sm: 4, md: 8, lg: 12 }}
                   style={{ display: 'flex', flexWrap: 'wrap', marginTop: '3%', alignContent: 'center', alignItems: 'center' }}
                   key={index}>
-                  <Link href={{ pathname: `/photo/${index}`, query: { object: JSON.stringify(e) } }}>
-                    <a>
+                  {/* <Link href={{ pathname: `/photo/${index}`, query: { object: JSON.stringify(e) } }}>
+                    <a> */}
                       <Card
                         hoverable
                         style={{ width: 240 }}
@@ -63,8 +63,8 @@ export default function Home() {
                         </Descriptions>
                         <Meta title={`${e.user.name}`} description={` ${moment(e.user.updated_at).format("MMMM-Do-YYYY")}`} />
                       </Card>
-                    </a>
-                  </Link>
+                    {/* </a>
+                  </Link> */}
                 </Col>
               ))}
             </Row>
