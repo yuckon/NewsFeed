@@ -113,10 +113,9 @@ function Details({ router: { query } }) {
                                         {twitterLink()}
                                         {portfolioLink()}
                                     </div>
-                                    <br />
                                 </Col>
                             </Row>
-                            <div style={{ textAlign: 'center', fontStyle: 'italic' }}>
+                            <div style={{ textAlign: 'center', fontStyle: 'italic', marginTop: '2%' }}>
                                 <FireTwoTone twoToneColor="#e25822" /> Thank you to give all your support to this artist <FireTwoTone twoToneColor="#e25822" />
                             </div>
                         </Card>
