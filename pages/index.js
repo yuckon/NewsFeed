@@ -22,6 +22,7 @@ export default function Home() {
     loadData()
   }, [])
   const { Meta } = Card
+  console.log(news)
 
   return (
 

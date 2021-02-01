@@ -1,34 +1,83 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`].
 
 ## Getting Started
 
-First, run the development server:
+First, after you pull the project be sure to have all the `node-modules`:
+
+```bash
+npm install
+```
+
+Next, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## API routes
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+I used the unsplashed API (https://api.unsplash.com/photos/?client_id=YOUR_ACCESS_KEY). You can edit it in `apiKey.js`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+I created this file in order to protect this confidential information (You just need to add this file to the `.gitignore` file), in order to be sure that, every person that uses this project will create its own account for this API.
 
-## Learn More
+But don't worry for this time, I gave you mine ;)
 
-To learn more about Next.js, take a look at the following resources:
+## API Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The return from this `*GET*` method (that I write just above) got this structure for exemple :
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+[
+    {
+    0:
+        alt_description: "laptop on brown wooden table"
+        blur_hash: "LRIh,4_NMx9GxC%g9FIUodIURjV@"
+        categories: []
+        color: "#737373"
+        created_at: "2020-07-01T18:30:13-04:00"
+        current_user_collections: []
+        description: null
+        height: 4016
+        id: "bXfQLglc81U"
+        liked_by_user: false
+        likes: 577
+        links: {
+            self: "https://api.unsplash.com/photos/bXfQLglc81U", 
+            html: "https://unsplash.com/photos/bXfQLglc81U", 
+            download: "https://unsplash.com/photos/bXfQLglc81U/download", 
+            download_location: "https://api.unsplash.com/photos/bXfQLglc81U/download"
+            }
+        promoted_at: null
+        sponsorship: {
+            impression_urls: Array(1), 
+            tagline: "Designed to be the Best", 
+            tagline_url: "http://www.dell.com/xps", 
+            sponsor: {
+                …
+            }
+        }
+        updated_at: "2021-01-31T15:11:53-05:00"
+        urls: {
+            raw: "https://images.unsplash.com/photo-1593642533144-3d…XwyMDMxNTV8MXwxfGFsbHwxfHx8fHx8Mnw&ixlib=rb-1.2.1", 
+            full: "https://images.unsplash.com/photo-1593642533144-3d…MxNTV8MXwxfGFsbHwxfHx8fHx8Mnw&ixlib=rb-1.2.1&q=85", 
+            regular: "https://images.unsplash.com/photo-1593642533144-3d…XwxfGFsbHwxfHx8fHx8Mnw&ixlib=rb-1.2.1&q=80&w=1080", 
+            small: "https://images.unsplash.com/photo-1593642533144-3d…MXwxfGFsbHwxfHx8fHx8Mnw&ixlib=rb-1.2.1&q=80&w=400", 
+            thumb: "https://images.unsplash.com/photo-1593642533144-3d…MXwxfGFsbHwxfHx8fHx8Mnw&ixlib=rb-1.2.1&q=80&w=200"
+        }
+        user: {
+            id: "2DC3GyeqWjI", 
+            updated_at: "2021-02-01T10:02:56-05:00", 
+            username: "xps", 
+            name: "XPS", 
+            first_name: "XPS", 
+            …
+        }
+        width: 6016
+    },
+    {
+    1: ...   
+    }
+]
+```
