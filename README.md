@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## API routes
 
-I used the unsplashed API (https://api.unsplash.com/photos/?client_id=YOUR_ACCESS_KEY). You can edit it in `apiKey.js`.
+I used the unsplashed API, and I only used the `GET` method (https://api.unsplash.com/photos/?client_id=YOUR_ACCESS_KEY). You can edit it in `apiKey.js`.
 
 I created this file in order to protect this confidential information (You just need to add this file to the `.gitignore` file), in order to be sure that, every person that uses this project will create its own account for this API.
 
@@ -26,7 +26,7 @@ But don't worry for this time, I gave you mine ;)
 
 ## API Structure
 
-The return from this `*GET*` method (that I write just above) got this structure for exemple :
+The return from this `GET` method (that I write just above) got this structure for exemple :
 
 ```
 [
@@ -81,3 +81,5 @@ The return from this `*GET*` method (that I write just above) got this structure
     }
 ]
 ```
+
+I used this array of Objects to display them as table of cards, then when I click on one of these cards, it shows the details about the artist that made the shot. I pass the the props of the card directly in the router.
