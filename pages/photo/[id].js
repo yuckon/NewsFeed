@@ -84,54 +84,65 @@ function Details({ router: { query } }) {
             </Breadcrumb>
             <div className="site-page-header-ghost-wrapper">
                 <Title level={2} underline={true} className={styles.title} style={{ textAlign: 'center', textTransform: 'capitalize' }}>{photo.alt_description}</Title>
-                <Descriptions size="small" column={1}>
+                <Descriptions size="small" column={1} id="imageTab">
                     <Descriptions.Item id="imageArticle" >
-                        <Image src={photo.links.download} alt={photo.alt_description} width={'100%'}
+                        <Row justify="center">
+                            <Col span={8}>
+                        <Image src={photo.links.download} alt={photo.alt_description}
                             placeholder={
                                 <Image
                                     preview={false}
                                     src={photo.links.download}
                                 />
                             } />
+                            </Col>
+                        </Row>
                     </Descriptions.Item>
-                    <Descriptions.Item>
-                        <div style={{ fontWeight: 'bold', float: 'left', width: '50%' }}>{photo.likes} <HeartTwoTone twoToneColor="#FF4033" /></div>
-                        <div style={{ fontSize: '1.2em', fontStyle: 'italic', float: 'left', textAlign: 'right', width: '50%' }}>Shot taken {moment(photo.user.updated_at).format("MMMM-Do-YYYY")}</div>
-                    </Descriptions.Item >
-                    <Descriptions.Item>
-                        <Card hoverable style={{ backgroundColor: "#f5f5f5", width: '100%' }} bodyStyle={{ padding: 0, alignSelf: 'center' }}>
-                            <div style={{ fontSize: '1.2em', fontStyle: 'italic', padding: 0, display: 'flex', justifyContent: 'center' }}>
-                                <Avatar size={64} src={`${photo.user.profile_image.medium}`} />
-                            </div>
-                            <br />
-                            <div style={{ fontSize: '1.2em', fontStyle: 'italic', textAlign: 'center' }}>{photo.user.name}   {photo.user.location}</div>
-                            {renderBio()}
-                            <Row style={{ marginTop: '2%' }}>
-                                <Col span={12}>
-                                    <div style={{ fontSize: '1em', fontStyle: 'italic', marginTop: '2%' }}>
-                                        <div style={{ textAlign: 'center' }}>
-                                            {numberCollection()}
-                                            {numberLikes()}
-                                            {numberPhotos()}
-                                        </div>
+                    </Descriptions>
+                    <Row justify="center">
+                        <Col span={8}>
+                            <Descriptions size="small" column={1}>
+                            
+                            <Descriptions.Item>
+                                <div style={{ fontWeight: 'bold', float: 'left', width: '50%' }}>{photo.likes} <HeartTwoTone twoToneColor="#FF4033" /></div>
+                                <div style={{ fontSize: '1.2em', fontStyle: 'italic', float: 'left', textAlign: 'right', width: '50%' }}>Shot taken {moment(photo.user.updated_at).format("MMMM-Do-YYYY")}</div>
+                            </Descriptions.Item >
+                            <Descriptions.Item>
+                                <Card hoverable style={{ backgroundColor: "#f5f5f5", width: '100%' }} bodyStyle={{ padding: 0, alignSelf: 'center' }}>
+                                    <div style={{ fontSize: '1.2em', fontStyle: 'italic', padding: 0, display: 'flex', justifyContent: 'center' }}>
+                                        <Avatar size={64} src={`${photo.user.profile_image.medium}`} style={{marginTop: "2%"}}/>
                                     </div>
-                                </Col>
-                                <Col span={12}>
-                                    <div style={{ fontSize: '1em', fontStyle: 'italic', marginTop: '2%', textAlign: 'right' }}>
-                                        <div style={{ textAlign: 'center' }}>
-                                            {instagramLink()}
-                                            {twitterLink()}
-                                            {portfolioLink()}
-                                        </div>
+                                    <br />
+                                    <div style={{ fontSize: '1.2em', fontStyle: 'italic', textAlign: 'center' }}>{photo.user.name}   {photo.user.location}</div>
+                                    {renderBio()}
+                                    <Row style={{ marginTop: '2%' }}>
+                                        <Col span={12}>
+                                            <div style={{ fontSize: '1em', fontStyle: 'italic', marginTop: '2%' }}>
+                                                <div style={{ textAlign: 'center' }}>
+                                                    {numberCollection()}
+                                                    {numberLikes()}
+                                                    {numberPhotos()}
+                                                </div>
+                                            </div>
+                                        </Col>
+                                        <Col span={12}>
+                                            <div style={{ fontSize: '1em', fontStyle: 'italic', marginTop: '2%', textAlign: 'right' }}>
+                                                <div style={{ textAlign: 'center' }}>
+                                                    {instagramLink()}
+                                                    {twitterLink()}
+                                                    {portfolioLink()}
+                                                </div>
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                    <div style={{ textAlign: 'center', fontStyle: 'italic', marginTop: '2%' }}>
+                                        <FireTwoTone twoToneColor="#e25822" /> Thank you to give all your support to this artist <FireTwoTone twoToneColor="#e25822" />
                                     </div>
-                                </Col>
-                            </Row>
-                            <div style={{ textAlign: 'center', fontStyle: 'italic', marginTop: '2%' }}>
-                                <FireTwoTone twoToneColor="#e25822" /> Thank you to give all your support to this artist <FireTwoTone twoToneColor="#e25822" />
-                            </div>
-                        </Card>
-                    </Descriptions.Item>
-                </Descriptions>
+                                </Card>
+                            </Descriptions.Item>
+                        </Descriptions>
+                    </Col>
+                </Row>
                 <Divider />
                 <Footer id="footerArticle">
                     <a
